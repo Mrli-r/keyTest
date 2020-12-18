@@ -1,31 +1,38 @@
+package com.task;
 import com.KeyEnum;
 import com.SourceEnum;
 import com.XqianIllegalArgumentException;
 import com.alibaba.fastjson.JSON;
+import com.lz.TestService;
 import com.lz.TestServiceImpl;
-import javafx.application.Application;
-import jdk.nashorn.internal.ir.annotations.Reference;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.apache.commons.lang.time.DateUtils;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.util.CollectionUtils;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.scheduling.quartz.QuartzJobBean;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * 点赞的定时任务
+ */
 @Slf4j
-public class TestController {
-
-    TestServiceImpl testService =  new TestServiceImpl();
-
+public class LikeTask extends QuartzJobBean {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM");
 
-    @Test
-    public void testKey() throws XqianIllegalArgumentException{
+    @Autowired
+    private TestServiceImpl testService;
+
+
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+    @Override
+    protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException{
+
+        log.info("LikeTask-------- {}", sdf.format(new Date()));
+
 
         List<String> list = new ArrayList<>();
         for (int i = 10; i > 0; i--) {
@@ -41,10 +48,12 @@ public class TestController {
             testService.TestKey(map);
         }catch (XqianIllegalArgumentException e){
             log.info("程序执行出现异常 异常的具体信息为{}",e);
-            throw e;
+            //throw e;
         }
-
+      //  System.out.println("定时");
+        //将 Redis 里的点赞信息同步到数据库里
+        //    likedService.transLikedFromRedis2DB();
+        // likedService.transLikedCountFromRedis2DB();
     }
-
 
 }

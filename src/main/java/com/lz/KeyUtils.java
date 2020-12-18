@@ -54,14 +54,15 @@ public class KeyUtils {
         verifyParameterForKey(map,isSave);
 
         //返回一个指定key排序号的list
-        List<String> sortList = KeyEnum.getSortList();
+        List<String> sortList = KeyEnum.getSortList();//获取key
 
         //待拼接集合   返回一个不会触发扩容的ArrayList
         List<Object> valueList = Lists.newArrayListWithExpectedSize(map.size());
 
         sortList.forEach(str ->{
+          //  System.out.println(str);
             //获取指定key所在的枚举
-            KeyEnum keyEnum = KeyEnum.of(str);
+            KeyEnum keyEnum = KeyEnum.of(str);//获取key对应的枚举
             if (Objects.isNull(keyEnum) || keyEnum.equals(KeyEnum.JSON_BODY)){
                 //跳出本次循环 执行下次循环  不会拼接jsonBody作为key返回
                 return;
