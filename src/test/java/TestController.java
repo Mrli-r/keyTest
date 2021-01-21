@@ -47,4 +47,39 @@ public class TestController {
     }
 
 
+
+
+
+    @Test
+    public  void  TestDATA(){
+       /* List<Object>  list = new ArrayList<>();
+        list.add("wangwu");
+        list.add("lisi");
+        list.add("zhangsan");
+        list.add("sdadsa");
+
+            Object dataDeal = list;
+
+            if(dataDeal !=null){
+
+                System.out.println("list不是null");
+            }else{
+                System.out.println("list是null");
+            }*/
+
+        long milliSecond = 1610085491122L;
+        Date date = new Date();
+        date.setTime(milliSecond);
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(date));
+
+
+        long milliSecond1 = 1610085497681L;
+        Date date1 = new Date();
+        date1.setTime(milliSecond1);
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(date1));
+
+    }
+
+
+
 }
