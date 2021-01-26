@@ -3,17 +3,9 @@ import com.SourceEnum;
 import com.XqianIllegalArgumentException;
 import com.alibaba.fastjson.JSON;
 import com.lz.TestServiceImpl;
-import javafx.application.Application;
-import jdk.nashorn.internal.ir.annotations.Reference;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.util.CollectionUtils;
-import org.springframework.boot.test.context.SpringBootTest;
-
+import com.alibaba.fastjson.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -77,6 +69,19 @@ public class TestController {
         Date date1 = new Date();
         date1.setTime(milliSecond1);
         System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(date1));
+
+    }
+
+
+
+
+
+    @Test
+    public  void  TestJson(){
+        System.out.println(12345);
+        String  data =  "大啊啊";
+        JSONObject a  = new JSONObject();
+
 
     }
 
